@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatelessWidget {
+  final String friendName;
+
+  ChatScreen({required this.friendName}); // Constructor to accept friend's name
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Chat')),
+      appBar:
+          AppBar(title: Text('Chat with $friendName')), // Display friend's name
       body: Column(
         children: [
           Expanded(
             child: ListView(
               children: [
                 MessageBubble(message: 'Hello', isMe: true),
-                MessageBubble(message: 'Hi!', isMe: false),
+                MessageBubble(message: 'Hi $friendName!', isMe: false),
               ],
             ),
           ),
@@ -22,6 +27,7 @@ class ChatScreen extends StatelessWidget {
   }
 }
 
+// MessageBubble and ChatInputField remain unchanged
 class MessageBubble extends StatelessWidget {
   final String message;
   final bool isMe;
